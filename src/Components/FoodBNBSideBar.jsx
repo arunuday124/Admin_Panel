@@ -61,17 +61,11 @@ const FoodBNBSidebar = () => {
         {/* Sidebar Header with Logo and Brand Name */}
         <div className="flex items-center gap-3 p-6 pt-20 border-b border-white border-opacity-20">
           {/* Logo Image */}
-          <div className="w-10 h-10 flex items-center justify-center overflow-hidden">
+          <div className="w-10 h-10 flex items-center justify-center overflow-hidden rounded-lg">
             <img
               src={FoodBNBLogo}
               alt="FoodBNB Logo"
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                // Fallback if image doesn't load - display first letter
-                e.target.style.display = "none";
-                e.target.parentElement.innerHTML =
-                  '<span class="text-red-500 font-bold text-xl">F</span>';
-              }}
+              className="w-8 h-8 object-contain"
             />
           </div>
 
@@ -89,15 +83,13 @@ const FoodBNBSidebar = () => {
                 <li key={item.name}>
                   <a
                     href={item.path}
-                    className="flex items-center gap-3 px-4 py-3 rounded-lg text-white hover:bg-white hover:bg-opacity-20 transition-all duration-200 group"
+                    className="flex items-center gap-3 px-4 py-3 rounded-lg text-white 
+             hover:bg-white/10 hover:backdrop-blur-sm transition-all duration-200 group"
                   >
-                    {/* Icon with subtle animation on hover */}
                     <IconComponent
                       size={20}
                       className="group-hover:scale-110 transition-transform duration-200"
                     />
-
-                    {/* Menu item text */}
                     <span className="font-medium">{item.name}</span>
                   </a>
                 </li>
@@ -113,45 +105,6 @@ const FoodBNBSidebar = () => {
           </p>
         </div>
       </aside>
-
-      {/* Main Content Area - Adjusts when sidebar is open on desktop */}
-      <div
-        className={`min-h-screen transition-all duration-300 ${
-          isOpen ? "lg:ml-64" : "ml-0"
-        }`}
-      >
-        {/* Demo Content */}
-        <div className="p-8 pt-20">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">
-              Welcome to FoodBNB Admin Panel
-            </h2>
-            <p className="text-gray-600 mb-6">
-              Click the hamburger menu icon in the top left to open the sidebar
-              navigation.
-            </p>
-
-            {/* Demo Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[1, 2, 3, 4, 5, 6].map((item) => (
-                <div
-                  key={item}
-                  className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-200"
-                >
-                  <div className="w-12 h-12 bg-linear-to-r from-red-500 to-orange-500 rounded-lg mb-4"></div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                    Card {item}
-                  </h3>
-                  <p className="text-gray-600 text-sm">
-                    This is a demo card to showcase the layout with the sidebar
-                    component.
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
     </>
   );
 };
