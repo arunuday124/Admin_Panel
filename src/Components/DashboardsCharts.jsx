@@ -16,12 +16,12 @@ export default function DashboardCharts() {
   const barData = {
     weekly: [
       { date: "Jun 24", value: 180, label: "Mon" },
-      { date: "Jun 25", value: 220, label: "Tue" },
-      { date: "Jun 26", value: 190, label: "Wed" },
-      { date: "Jun 27", value: 250, label: "Thu" },
-      { date: "Jun 28", value: 210, label: "Fri" },
+      { date: "Jun 25", value: 140, label: "Tue" },
+      { date: "Jun 26", value: 250, label: "Wed" },
+      { date: "Jun 27", value: 110, label: "Thu" },
+      { date: "Jun 28", value: 200, label: "Fri" },
       { date: "Jun 29", value: 160, label: "Sat" },
-      { date: "Jun 30", value: 200, label: "Sun" },
+      { date: "Jun 30", value: 220, label: "Sun" },
     ],
     monthly: [
       { date: "Week 1", value: 850, label: "W1" },

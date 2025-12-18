@@ -1,1 +1,28 @@
 @import "tailwindcss";
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+/* Disable text selection */
+* {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none;     /* IE 10+ */
+  user-select: none;         /* Standard */
+}
+
+/* Disable drag */
+* {
+  -webkit-user-drag: none;
+}
+
+/* Disable image selection */
+img {
+  pointer-events: none;
+}

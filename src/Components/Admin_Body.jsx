@@ -16,6 +16,10 @@ const restaurants = [
   "Pizza Town",
   "Green Bowl",
   "Sushi House",
+  "Curry Corner",
+  "Taco Loco",
+  "Pasta Fiesta",
+  "Vegan Vibes",
 ];
 
 const newRestaurants = [
@@ -31,6 +35,7 @@ const deliveryPartners = [
   { name: "Brian Cole", status: "Active" },
   { name: "Sophia Lee", status: "On Delivery" },
   { name: "Daniel Cruz", status: "Inactive" },
+  { name: "Sophie Lameo", status: "Inactive" },
 ];
 
 export default function AdminPanel() {
@@ -67,6 +72,24 @@ export default function AdminPanel() {
       date: "2024-12-11",
       customer: "James Taylor",
       status: "Processing",
+    },
+    {
+      id: "ORD-006",
+      date: "2025-12-11",
+      customer: "Holland Taylor",
+      status: "Processing",
+    },
+    {
+      id: "ORD-007",
+      date: "2025-12-10",
+      customer: "Samuel Warron",
+      status: "Cancelled",
+    },
+    {
+      id: "ORD-008",
+      date: "2025-12-10",
+      customer: "Hilda Morgan",
+      status: "Delivered",
     },
   ];
 
@@ -143,7 +166,7 @@ export default function AdminPanel() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 p-8">
+    <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 p-8 pt-24">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold text-gray-800 mb-8">
           Admin Dashboard
@@ -151,7 +174,7 @@ export default function AdminPanel() {
 
         <div className="grid grid-cols-3 gap-6 mb-6">
           {/* Card 1: Order History */}
-          <div className="bg-linear-to-b from-red-600 to-orange-500 rounded-lg shadow-lg p-4 text-white h-64">
+          <div className="bg-black rounded-lg shadow-lg p-4 text-white h-64">
             <div className="flex items-center gap-2 mb-3">
               <ShoppingCart className="w-4 h-4" />
               <h2 className="text-base font-semibold">Order History</h2>
@@ -187,7 +210,7 @@ export default function AdminPanel() {
           </div>
 
           {/* Card 2: Customer Reviews */}
-          <div className="bg-linear-to-b from-red-600 to-orange-500 rounded-lg shadow-lg p-4 text-white h-64">
+          <div className="bg-black rounded-lg shadow-lg p-4 text-white h-64">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
                 <Star className="w-4 h-4" />
@@ -234,7 +257,7 @@ export default function AdminPanel() {
           </div>
 
           {/* Card 3: Order Cancellations */}
-          <div className="bg-linear-to-b from-red-600 to-orange-500 rounded-lg shadow-lg p-4 text-white h-64">
+          <div className="bg-black rounded-lg shadow-lg p-4 text-white h-64">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
                 <XCircle className="w-4 h-4" />
@@ -258,7 +281,10 @@ export default function AdminPanel() {
               <div className="text-[10px] opacity-80">Total</div>
             </div>
 
-            <div className="overflow-y-auto h-36 space-y-1.5 scrollbar-thin scrollbar-thumb-white scrollbar-thumb-opacity-30">
+            <div
+              className="overflow-y-auto h-36 space-y-1.5 scrollbar-thin scrollbar-thumb-transparent scrollbar-track-transparent
+"
+            >
               {filteredCancellations.map((cancel) => (
                 <div
                   key={cancel.id}
@@ -282,23 +308,25 @@ export default function AdminPanel() {
         {/* Second Row - Cards 4, 5, 6 */}
         <div className="grid grid-cols-3 gap-6">
           {/* Card 4: Restaurants */}
-          <div className="bg-linear-to-b from-red-600 to-orange-500 rounded-lg shadow-lg p-4 text-white h-64">
+          <div className="bg-black rounded-lg shadow-lg p-4 text-white h-64">
             <div className="flex items-center gap-2 mb-4">
               <Store className="w-4 h-4" />
-              <h2 className="text-base font-semibold">Restaurants</h2>
+              <h2 className="text-base font-semibold">Total Registered</h2>
             </div>
 
             <div className="flex flex-col items-center justify-center h-44">
               <div className="text-5xl font-bold">{restaurants.length}</div>
-              <div className="text-sm opacity-80 mt-2">Total Restaurants</div>
+              <div className="text-sm opacity-80 mt-2">
+                Household Registered
+              </div>
             </div>
           </div>
 
           {/* Card 5: New Restaurants */}
-          <div className="bg-linear-to-b from-red-600 to-orange-500 rounded-lg shadow-lg p-4 text-white h-64">
+          <div className="bg-black rounded-lg shadow-lg p-4 text-white h-64">
             <div className="flex items-center gap-2 mb-3">
               <PlusCircle className="w-4 h-4" />
-              <h2 className="text-base font-semibold">New Restaurants</h2>
+              <h2 className="text-base font-semibold">New Registered</h2>
             </div>
 
             <div className="text-center mb-2">
@@ -322,7 +350,7 @@ export default function AdminPanel() {
           </div>
 
           {/* Card 6: Delivery Partners */}
-          <div className="bg-linear-to-b from-red-600 to-orange-500 rounded-lg shadow-lg p-4 text-white h-64">
+          <div className="bg-black rounded-lg shadow-lg p-4 text-white h-64">
             <div className="flex items-center gap-2 mb-3">
               <Truck className="w-4 h-4" />
               <h2 className="text-base font-semibold">Delivery Partners</h2>
