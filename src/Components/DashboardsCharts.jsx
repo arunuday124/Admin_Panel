@@ -103,36 +103,30 @@ export default function DashboardCharts() {
   const popOutDistance = 0;
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 p-8">
+    <div className="min-h-screen bg-gray-900 p-8">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-800 mb-8">
+        <h1 className="text-3xl font-bold text-white mb-8">
           Analytics Dashboard
         </h1>
 
         <div className="grid grid-cols-2 gap-6">
           {/* Pie Chart Card - Revenue */}
-          <div className="bg-white rounded-xl shadow-lg p-6">
+          <div className="bg-gray-800 rounded-xl shadow-black/50 shadow-lg p-6">
             <div className="flex items-center gap-2 mb-6">
-              <TrendingUp className="w-5 h-5 text-red-600" />
-              <h2 className="text-xl font-semibold text-gray-800">Revenue</h2>
+              <TrendingUp className="w-5 h-5 text-red-500" />
+              <h2 className="text-xl font-semibold text-white">Revenue</h2>
             </div>
 
             <div className="flex items-center justify-center">
               <svg width="400" height="400" viewBox="-100 -100 500 500">
                 {segments.map((segment, index) => {
-                  // Calculate mid angle
                   const midAngle = (segment.startAngle + segment.endAngle) / 2;
                   const isActive = activeSegment === index;
-
-                  // Pop out translation along midAngle
                   const offset = isActive ? popOutDistance : 0;
                   const offsetX = offset * Math.cos((midAngle * Math.PI) / 180);
                   const offsetY = offset * Math.sin((midAngle * Math.PI) / 180);
-
-                  // Slight scale for 3D effect
                   const scale = isActive ? 1.05 : 1;
 
-                  // Build path
                   const outerPath = describeArc(
                     cx,
                     cy,
@@ -160,7 +154,7 @@ export default function DashboardCharts() {
                       key={index}
                       d={pathData}
                       fill={segment.color}
-                      stroke="#fff"
+                      stroke="#1f1f1f"
                       strokeWidth="2"
                       style={{
                         cursor: "pointer",
@@ -199,7 +193,7 @@ export default function DashboardCharts() {
                           y1={lineEnd.y}
                           x2={labelPos.x}
                           y2={labelPos.y}
-                          stroke="#374151"
+                          stroke="#d1d5db"
                           strokeWidth="2"
                         />
                         <foreignObject
@@ -210,20 +204,21 @@ export default function DashboardCharts() {
                         >
                           <div
                             style={{
-                              background: "white",
-                              border: "2px solid #d1d5db",
+                              background: "#1f1f1f",
+                              border: "2px solid #374151",
                               borderRadius: "8px",
                               padding: "10px 14px",
-                              boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+                              boxShadow: "0 4px 12px rgba(0,0,0,0.5)",
                               fontSize: "14px",
                               fontFamily:
                                 "system-ui, -apple-system, sans-serif",
+                              color: "white",
                             }}
                           >
                             <div
                               style={{
                                 fontWeight: "700",
-                                color: "#111827",
+                                color: "white",
                                 marginBottom: "6px",
                                 fontSize: "15px",
                               }}
@@ -232,7 +227,7 @@ export default function DashboardCharts() {
                             </div>
                             <div
                               style={{
-                                color: "#374151",
+                                color: "#e5e7eb",
                                 fontWeight: "600",
                                 marginBottom: "4px",
                               }}
@@ -241,7 +236,7 @@ export default function DashboardCharts() {
                             </div>
                             <div
                               style={{
-                                color: "#6b7280",
+                                color: "#9ca3af",
                                 fontSize: "13px",
                                 fontWeight: "500",
                               }}
@@ -254,7 +249,7 @@ export default function DashboardCharts() {
                     );
                   })()}
 
-                <circle cx={cx} cy={cy} r={innerRadius} fill="white" />
+                <circle cx={cx} cy={cy} r={innerRadius} fill="#1f1f1f" />
 
                 <text
                   x={cx}
@@ -262,7 +257,7 @@ export default function DashboardCharts() {
                   textAnchor="middle"
                   style={{
                     fontSize: "16px",
-                    fill: "#6b7280",
+                    fill: "#9ca3af",
                     fontFamily: "system-ui, -apple-system, sans-serif",
                   }}
                 >
@@ -274,7 +269,7 @@ export default function DashboardCharts() {
                   textAnchor="middle"
                   style={{
                     fontSize: "24px",
-                    fill: "#111827",
+                    fill: "white",
                     fontWeight: "600",
                     fontFamily: "system-ui, -apple-system, sans-serif",
                   }}
@@ -288,25 +283,25 @@ export default function DashboardCharts() {
               {pieData.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center justify-between p-3 bg-gray-50 rounded-lg
-           border border-gray-200
+                  className="flex items-center justify-between p-3 bg-gray-800 rounded-lg
+           border border-gray-700
            transition-all duration-300 cursor-pointer
-           hover:scale-[1.05] hover:shadow-md hover:bg-white hover:border-gray-300"
+           hover:scale-[1.05] hover:shadow-black/50 hover:bg-gray-700 hover:border-gray-600"
                 >
                   <div className="flex items-center gap-3">
                     <div
                       className="w-4 h-4 rounded-full"
                       style={{ backgroundColor: item.color }}
                     />
-                    <span className="text-sm font-medium text-gray-700">
+                    <span className="text-sm font-medium text-white">
                       {item.label}
                     </span>
                   </div>
                   <div className="text-right">
-                    <div className="text-sm font-bold text-gray-800">
+                    <div className="text-sm font-bold text-white">
                       ${item.value.toLocaleString()}
                     </div>
-                    <div className="text-xs text-gray-500">
+                    <div className="text-xs text-gray-400">
                       {item.percentage}%
                     </div>
                   </div>
@@ -316,11 +311,11 @@ export default function DashboardCharts() {
           </div>
 
           {/* Bar Chart Card - Order Summary */}
-          <div className="bg-white rounded-xl shadow-lg p-6">
+          <div className="bg-gray-800 rounded-xl shadow-black/50 shadow-lg p-6">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center gap-2">
-                <BarChart3 className="w-5 h-5 text-red-600" />
-                <h2 className="text-xl font-semibold text-gray-800">
+                <BarChart3 className="w-5 h-5 text-red-500" />
+                <h2 className="text-xl font-semibold text-white">
                   Order Summary
                 </h2>
               </div>
@@ -332,7 +327,7 @@ export default function DashboardCharts() {
                     className={`px-3 py-1 text-xs font-medium rounded-lg transition-colors ${
                       activeTab === tab
                         ? "bg-gray-900 text-white"
-                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                        : "bg-gray-700 text-gray-300 hover:bg-gray-600"
                     }`}
                   >
                     {tab.charAt(0).toUpperCase() + tab.slice(1)}
@@ -355,10 +350,10 @@ export default function DashboardCharts() {
                   >
                     <div className="relative w-full">
                       {isHovered && (
-                        <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
+                        <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-700 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
                           {item.value} orders
                           <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full">
-                            <div className="border-4 border-transparent border-t-gray-900"></div>
+                            <div className="border-4 border-transparent border-t-gray-500"></div>
                           </div>
                         </div>
                       )}
@@ -373,7 +368,7 @@ export default function DashboardCharts() {
                         }}
                       />
                     </div>
-                    <span className="text-xs text-gray-600 font-medium">
+                    <span className="text-xs text-gray-300 font-medium">
                       {item.date}
                     </span>
                   </div>
@@ -381,17 +376,17 @@ export default function DashboardCharts() {
               })}
             </div>
 
-            <div className="mt-6 pt-4 border-t border-gray-200">
+            <div className="mt-6 pt-4 border-t border-gray-700">
               <div className="flex justify-between items-center">
                 <div>
-                  <p className="text-xs text-gray-500">Total Orders</p>
-                  <p className="text-2xl font-bold text-gray-800">
+                  <p className="text-xs text-gray-400">Total Orders</p>
+                  <p className="text-2xl font-bold text-white">
                     {currentData.reduce((sum, item) => sum + item.value, 0)}
                   </p>
                 </div>
                 <div className="text-right">
-                  <p className="text-xs text-gray-500">Average per period</p>
-                  <p className="text-2xl font-bold text-gray-800">
+                  <p className="text-xs text-gray-400">Average per period</p>
+                  <p className="text-2xl font-bold text-white">
                     {Math.round(
                       currentData.reduce((sum, item) => sum + item.value, 0) /
                         currentData.length

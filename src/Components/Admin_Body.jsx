@@ -155,44 +155,48 @@ export default function AdminPanel() {
   const getStatusColor = (status) => {
     switch (status) {
       case "Delivered":
-        return "bg-green-100 text-green-800";
+        return "bg-green-700 text-white";
       case "Processing":
-        return "bg-yellow-100 text-yellow-800";
+        return "bg-yellow-700 text-white";
       case "Shipped":
-        return "bg-blue-100 text-blue-800";
+        return "bg-blue-700 text-white";
       default:
-        return "bg-gray-100 text-gray-800";
+        return "bg-gray-700 text-white";
     }
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 p-8 pt-24">
+    <div className="min-h-screen bg-black p-8 pt-24 text-white">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-800 mb-8">
-          Admin Dashboard
-        </h1>
+        <h1 className="text-3xl font-bold text-white mb-8">Admin Dashboard</h1>
 
         <div className="grid grid-cols-3 gap-6 mb-6">
           {/* Card 1: Order History */}
-          <div className="bg-black rounded-lg shadow-lg p-4 text-white h-64">
+          <div className="bg-gray-900 rounded-lg shadow-lg p-4 text-white h-64">
             <div className="flex items-center gap-2 mb-3">
-              <ShoppingCart className="w-4 h-4" />
-              <h2 className="text-base font-semibold">Order History</h2>
+              <ShoppingCart className="w-4 h-4 text-white" />
+              <h2 className="text-base font-semibold text-white">
+                Order History
+              </h2>
             </div>
 
-            <div className="rounded-lg overflow-y-auto h-44 scrollbar-thin scrollbar-thumb-white scrollbar-thumb-opacity-30">
-              <table className="w-full">
+            <div className="rounded-lg overflow-y-auto h-44 scrollbar-thin scrollbar-thumb-gray-700 scrollbar-thumb-opacity-50">
+              <table className="w-full text-white">
                 <tbody className="text-xs">
                   {orders.map((order) => (
                     <tr
                       key={order.id}
-                      className="border-b border-white border-opacity-20"
+                      className="border-b border-gray-700 border-opacity-20"
                     >
-                      <td className="py-1 px-0.5 text-xs">{order.date}</td>
-                      <td className="py-1 px-0.5 text-xs font-medium">
+                      <td className="py-1 px-0.5 text-xs text-white">
+                        {order.date}
+                      </td>
+                      <td className="py-1 px-0.5 text-xs font-medium text-white">
                         {order.id}
                       </td>
-                      <td className="py-1 px-0.5 text-xs">{order.customer}</td>
+                      <td className="py-1 px-0.5 text-xs text-white">
+                        {order.customer}
+                      </td>
                       <td className="py-1 px-0.5">
                         <span
                           className={`text-[10px] px-1.5 py-0.5 rounded-full ${getStatusColor(
@@ -210,31 +214,33 @@ export default function AdminPanel() {
           </div>
 
           {/* Card 2: Customer Reviews */}
-          <div className="bg-black rounded-lg shadow-lg p-4 text-white h-64">
+          <div className="bg-gray-900 rounded-lg shadow-lg p-4 text-white h-64">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
-                <Star className="w-4 h-4" />
-                <h2 className="text-base font-semibold">Customer Reviews</h2>
+                <Star className="w-4 h-4 text-white" />
+                <h2 className="text-base font-semibold text-white">
+                  Customer Reviews
+                </h2>
               </div>
-              <label className="flex items-center gap-1.5 cursor-pointer">
+              <label className="flex items-center gap-1.5 cursor-pointer text-white">
                 <input
                   type="checkbox"
                   checked={showFiveStarOnly}
                   onChange={(e) => setShowFiveStarOnly(e.target.checked)}
                   className="w-3 h-3 rounded"
                 />
-                <span className="text-[10px]">5★</span>
+                <span className="text-[10px] text-white">5★</span>
               </label>
             </div>
 
-            <div className="overflow-y-auto h-44 space-y-2 scrollbar-thin scrollbar-thumb-white scrollbar-thumb-opacity-30">
+            <div className="overflow-y-auto h-44 space-y-2 scrollbar-thin scrollbar-thumb-gray-700 scrollbar-thumb-opacity-50">
               {filteredReviews.map((review, index) => (
                 <div
                   key={index}
-                  className="rounded p-2 border border-white border-opacity-20"
+                  className="rounded p-2 border border-gray-700 border-opacity-20 text-white"
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <span className="font-medium text-[10px]">
+                    <span className="font-medium text-[10px] text-white">
                       {review.customer}
                     </span>
                     <div className="flex gap-0.5">
@@ -250,21 +256,25 @@ export default function AdminPanel() {
                       ))}
                     </div>
                   </div>
-                  <p className="text-[10px] opacity-90">{review.comment}</p>
+                  <p className="text-[10px] opacity-90 text-white">
+                    {review.comment}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Card 3: Order Cancellations */}
-          <div className="bg-black rounded-lg shadow-lg p-4 text-white h-64">
+          <div className="bg-gray-900 rounded-lg shadow-lg p-4 text-white h-64">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
-                <XCircle className="w-4 h-4" />
-                <h2 className="text-base font-semibold">Cancellations</h2>
+                <XCircle className="w-4 h-4 text-white" />
+                <h2 className="text-base font-semibold text-white">
+                  Cancellations
+                </h2>
               </div>
-              <label className="flex items-center gap-1.5 cursor-pointer">
-                <Filter className="w-3 h-3" />
+              <label className="flex items-center gap-1.5 cursor-pointer text-white">
+                <Filter className="w-3 h-3 text-white" />
                 <input
                   type="checkbox"
                   checked={filterCancellations}
@@ -275,28 +285,27 @@ export default function AdminPanel() {
             </div>
 
             <div className="text-center mb-2">
-              <div className="text-2xl font-bold">
+              <div className="text-2xl font-bold text-white">
                 {filteredCancellations.length}
               </div>
-              <div className="text-[10px] opacity-80">Total</div>
+              <div className="text-[10px] opacity-80 text-white">Total</div>
             </div>
 
-            <div
-              className="overflow-y-auto h-36 space-y-1.5 scrollbar-thin scrollbar-thumb-transparent scrollbar-track-transparent
-"
-            >
+            <div className="overflow-y-auto h-36 space-y-1.5 scrollbar-thin scrollbar-thumb-transparent scrollbar-track-transparent">
               {filteredCancellations.map((cancel) => (
                 <div
                   key={cancel.id}
-                  className="rounded p-1.5 border border-white border-opacity-20"
+                  className="rounded p-1.5 border border-gray-700 border-opacity-20 text-white"
                 >
                   <div className="flex justify-between items-start">
-                    <span className="font-medium text-[10px]">{cancel.id}</span>
-                    <span className="text-[10px] opacity-70">
+                    <span className="font-medium text-[10px] text-white">
+                      {cancel.id}
+                    </span>
+                    <span className="text-[10px] opacity-70 text-white">
                       {cancel.date}
                     </span>
                   </div>
-                  <div className="text-[10px] opacity-90">
+                  <div className="text-[10px] opacity-90 text-white">
                     {cancel.customer}
                   </div>
                 </div>
@@ -308,41 +317,51 @@ export default function AdminPanel() {
         {/* Second Row - Cards 4, 5, 6 */}
         <div className="grid grid-cols-3 gap-6">
           {/* Card 4: Restaurants */}
-          <div className="bg-black rounded-lg shadow-lg p-4 text-white h-64">
+          <div className="bg-gray-900 rounded-lg shadow-lg p-4 text-white h-64">
             <div className="flex items-center gap-2 mb-4">
-              <Store className="w-4 h-4" />
-              <h2 className="text-base font-semibold">Total Registered</h2>
+              <Store className="w-4 h-4 text-white" />
+              <h2 className="text-base font-semibold text-white">
+                Total Registered
+              </h2>
             </div>
 
             <div className="flex flex-col items-center justify-center h-44">
-              <div className="text-5xl font-bold">{restaurants.length}</div>
-              <div className="text-sm opacity-80 mt-2">
+              <div className="text-5xl font-bold text-white">
+                {restaurants.length}
+              </div>
+              <div className="text-sm opacity-80 mt-2 text-white">
                 Household Registered
               </div>
             </div>
           </div>
 
           {/* Card 5: New Restaurants */}
-          <div className="bg-black rounded-lg shadow-lg p-4 text-white h-64">
+          <div className="bg-gray-900 rounded-lg shadow-lg p-4 text-white h-64">
             <div className="flex items-center gap-2 mb-3">
-              <PlusCircle className="w-4 h-4" />
-              <h2 className="text-base font-semibold">New Registered</h2>
+              <PlusCircle className="w-4 h-4 text-white" />
+              <h2 className="text-base font-semibold text-white">
+                New Registered
+              </h2>
             </div>
 
             <div className="text-center mb-2">
-              <div className="text-2xl font-bold">{newRestaurants.length}</div>
-              <div className="text-[10px] opacity-80">Added This Week</div>
+              <div className="text-2xl font-bold text-white">
+                {newRestaurants.length}
+              </div>
+              <div className="text-[10px] opacity-80 text-white">
+                Added This Week
+              </div>
             </div>
 
-            <div className="overflow-y-auto h-36 space-y-1.5 scrollbar-thin scrollbar-thumb-white scrollbar-thumb-opacity-30">
+            <div className="overflow-y-auto h-36 space-y-1.5 scrollbar-thin scrollbar-thumb-gray-700 scrollbar-thumb-opacity-50">
               {newRestaurants.map((res, index) => (
                 <div
                   key={index}
-                  className="rounded p-1.5 border border-white border-opacity-20"
+                  className="rounded p-1.5 border border-gray-700 border-opacity-20 text-white"
                 >
                   <div className="flex justify-between text-[10px]">
-                    <span className="font-medium">{res.name}</span>
-                    <span className="opacity-70">{res.date}</span>
+                    <span className="font-medium text-white">{res.name}</span>
+                    <span className="opacity-70 text-white">{res.date}</span>
                   </div>
                 </div>
               ))}
@@ -350,28 +369,36 @@ export default function AdminPanel() {
           </div>
 
           {/* Card 6: Delivery Partners */}
-          <div className="bg-black rounded-lg shadow-lg p-4 text-white h-64">
+          <div className="bg-gray-900 rounded-lg shadow-lg p-4 text-white h-64">
             <div className="flex items-center gap-2 mb-3">
-              <Truck className="w-4 h-4" />
-              <h2 className="text-base font-semibold">Delivery Partners</h2>
+              <Truck className="w-4 h-4 text-white" />
+              <h2 className="text-base font-semibold text-white">
+                Delivery Partners
+              </h2>
             </div>
 
             <div className="text-center mb-2">
-              <div className="text-2xl font-bold">
+              <div className="text-2xl font-bold text-white">
                 {deliveryPartners.length}
               </div>
-              <div className="text-[10px] opacity-80">Total Partners</div>
+              <div className="text-[10px] opacity-80 text-white">
+                Total Partners
+              </div>
             </div>
 
-            <div className="overflow-y-auto h-36 space-y-1.5 scrollbar-thin scrollbar-thumb-white scrollbar-thumb-opacity-30">
+            <div className="overflow-y-auto h-36 space-y-1.5 scrollbar-thin scrollbar-thumb-gray-700 scrollbar-thumb-opacity-50">
               {deliveryPartners.map((partner, index) => (
                 <div
                   key={index}
-                  className="rounded p-1.5 border border-white border-opacity-20"
+                  className="rounded p-1.5 border border-gray-700 border-opacity-20 text-white"
                 >
                   <div className="flex justify-between text-[10px]">
-                    <span className="font-medium">{partner.name}</span>
-                    <span className="opacity-70">{partner.status}</span>
+                    <span className="font-medium text-white">
+                      {partner.name}
+                    </span>
+                    <span className="opacity-70 text-white">
+                      {partner.status}
+                    </span>
                   </div>
                 </div>
               ))}

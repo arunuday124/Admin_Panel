@@ -11,7 +11,7 @@ const FoodBNBSidebar = ({ isOpen, toggleSidebar }) => {
   const navigationItems = [
     { name: "Dashboard", icon: Home, path: "/dashboard" },
     { name: "Orders", icon: ShoppingCart, path: "/orders" },
-    { name: "Login", icon: Users, path: "/users" },
+    { name: "Login", icon: Users, path: "/login" },
     { name: "Settings", icon: Settings, path: "/settings" },
   ];
 
@@ -20,7 +20,7 @@ const FoodBNBSidebar = ({ isOpen, toggleSidebar }) => {
       {/* Overlay - Appears when sidebar is open on mobile/tablet */}
       {/* Clicking overlay closes the sidebar */}
       <div
-        className={`fixed inset-0 bg-black bg-opacity-50 z-30 transition-opacity duration-300 lg:hidden ${
+        className={`fixed inset-0 bg-black bg-opacity-70 z-30 transition-opacity duration-300 lg:hidden ${
           isOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
         onClick={toggleSidebar}
@@ -29,7 +29,7 @@ const FoodBNBSidebar = ({ isOpen, toggleSidebar }) => {
 
       {/* Sidebar Container */}
       <aside
-        className={`fixed left-0 w-64 bg-black text-white shadow-2xl z-40 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed left-0 w-64 bg-gray-900 text-white shadow-2xl z-40 transform transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
         style={{ top: "64px", height: "calc(100vh - 64px)" }}
@@ -46,7 +46,9 @@ const FoodBNBSidebar = ({ isOpen, toggleSidebar }) => {
           </div>
 
           {/* Brand Name */}
-          <h1 className="text-2xl font-bold tracking-tight">FoodBNB</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-white">
+            FoodBNB
+          </h1>
         </div>
 
         {/* Navigation Menu */}
@@ -64,9 +66,9 @@ const FoodBNBSidebar = ({ isOpen, toggleSidebar }) => {
                   >
                     <IconComponent
                       size={20}
-                      className="group-hover:scale-110 transition-transform duration-200"
+                      className="text-white group-hover:scale-110 transition-transform duration-200"
                     />
-                    <span className="font-medium">{item.name}</span>
+                    <span className="font-medium text-white">{item.name}</span>
                   </a>
                 </li>
               );

@@ -58,37 +58,37 @@ export default function OrderList() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-gray-50 to-gray-100 p-8">
+    <div className="min-h-screen bg-gray-950 text-white p-8">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-800 mb-8">Order List</h1>
+        <h1 className="text-3xl font-bold text-white mb-8">Order List</h1>
 
-        <div className="bg-white rounded-xl shadow-lg p-6">
+        <div className="bg-gray-900 rounded-xl shadow-lg p-6">
           <div className="overflow-x-auto">
-            <table className="w-full">
+            <table className="w-full text-white">
               <thead>
-                <tr className="border-b border-gray-200">
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-600">
+                <tr className="border-b border-gray-700">
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-white">
                     #
                   </th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-600">
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-white">
                     Order ID
                   </th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-600">
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-white">
                     Date
                   </th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-600">
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-white">
                     Customer Name
                   </th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-600">
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-white">
                     Location
                   </th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-600">
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-white">
                     Amount
                   </th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-600">
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-white">
                     Status Order
                   </th>
-                  <th className="text-center py-3 px-4 text-sm font-semibold text-gray-600">
+                  <th className="text-center py-3 px-4 text-sm font-semibold text-white">
                     Delete Order
                   </th>
                 </tr>
@@ -97,34 +97,34 @@ export default function OrderList() {
                 {orders.map((order, index) => (
                   <tr
                     key={order.id}
-                    className="border-b border-gray-100 hover:bg-gray-50 transition-colors"
+                    className="border-b border-gray-700 hover:bg-gray-800 transition-colors"
                   >
-                    <td className="py-4 px-4 text-sm text-gray-600">
+                    <td className="py-4 px-4 text-sm text-white">
                       {index + 1}
                     </td>
-                    <td className="py-4 px-4 text-sm font-semibold text-gray-800">
+                    <td className="py-4 px-4 text-sm font-semibold text-white">
                       {order.id}
                     </td>
-                    <td className="py-4 px-4 text-sm text-gray-600">
+                    <td className="py-4 px-4 text-sm text-white">
                       {order.date}
                     </td>
-                    <td className="py-4 px-4 text-sm text-gray-800">
+                    <td className="py-4 px-4 text-sm text-white">
                       {order.customer}
                     </td>
-                    <td className="py-4 px-4 text-sm text-gray-600">
+                    <td className="py-4 px-4 text-sm text-white">
                       {order.location}
                     </td>
-                    <td className="py-4 px-4 text-sm font-semibold text-gray-800">
+                    <td className="py-4 px-4 text-sm font-semibold text-white">
                       {order.amount}
                     </td>
                     <td className="py-4 px-4">
                       <span
                         className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${
                           order.status === "New Order"
-                            ? "bg-blue-100 text-blue-700"
+                            ? "bg-gray-700 text-white"
                             : order.status === "Processing"
-                            ? "bg-yellow-100 text-yellow-700"
-                            : "bg-green-100 text-green-700"
+                            ? "bg-gray-600 text-white"
+                            : "bg-gray-800 text-white"
                         }`}
                       >
                         {order.status}
