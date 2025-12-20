@@ -19,7 +19,7 @@ const FoodBNBSidebar = ({ isOpen, toggleSidebar }) => {
     <>
       {/* Overlay - Appears when sidebar is open on mobile/tablet */}
       <div
-        className={`fixed inset-0 bg-black bg-opacity-70 z-[60] transition-opacity duration-300 lg:hidden ${
+        className={`fixed inset-0 bg-black bg-opacity-70 z-60 transition-opacity duration-300 lg:hidden ${
           isOpen
             ? "opacity-100 visible"
             : "opacity-0 invisible pointer-events-none"
@@ -30,7 +30,7 @@ const FoodBNBSidebar = ({ isOpen, toggleSidebar }) => {
 
       {/* Sidebar Container */}
       <aside
-        className={`fixed left-0 w-64 bg-gray-900 text-white shadow-2xl z-[80] transform transition-transform duration-300 ease-in-out ${
+        className={`fixed left-0 w-64 bg-gray-900 text-white shadow-2xl z-80 transform transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
         style={{ top: "64px", height: "calc(100vh - 64px)" }}

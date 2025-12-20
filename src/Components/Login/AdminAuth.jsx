@@ -1,5 +1,13 @@
 import React, { useState } from "react";
 import { User, Lock, LogIn, UserPlus } from "lucide-react";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
+import { app } from "../../Firebase";
+
+// Adjust path if needed
 
 export default function AdminAuth() {
   const [isSignup, setIsSignup] = useState(false);
@@ -9,11 +17,14 @@ export default function AdminAuth() {
     confirmPassword: "",
   });
 
+  const auth = getAuth(app);
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleLogin = (e) => {
+  // LOGIN FUNCTION WITH FIREBASE
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     if (!form.username || !form.password) {
@@ -21,13 +32,21 @@ export default function AdminAuth() {
       return;
     }
 
-    console.log("Admin Login:", form);
+    try {
+      // Firebase login
+      await signInWithEmailAndPassword(auth, form.username, form.password);
 
-    // ✅ ADDED: redirect to main dashboard
-    window.location.href = "/";
+      console.log("Admin Login:", form);
+
+      // Redirect to main page (same behavior)
+      window.location.href = "/";
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
-  const handleSignup = (e) => {
+  // SIGNUP FUNCTION WITH FIREBASE
+  const handleSignup = async (e) => {
     e.preventDefault();
 
     if (!form.username || !form.password || !form.confirmPassword) {
@@ -40,11 +59,18 @@ export default function AdminAuth() {
       return;
     }
 
-    console.log("Admin Signup:", form);
+    try {
+      // Firebase signup
+      await createUserWithEmailAndPassword(auth, form.username, form.password);
 
-    // Redirect back to login
-    setIsSignup(false);
-    setForm({ username: "", password: "", confirmPassword: "" });
+      console.log("Admin Signup:", form);
+
+      // Redirect back to login (same behavior)
+      setIsSignup(false);
+      setForm({ username: "", password: "", confirmPassword: "" });
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   return (
@@ -71,12 +97,12 @@ export default function AdminAuth() {
             <div className="relative">
               <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
               <input
-                type="text"
+                type="email"
                 name="username"
                 value={form.username}
                 onChange={handleChange}
                 required
-                placeholder="Admin username"
+                placeholder="Admin email"
                 className="w-full pl-10 pr-4 py-2 rounded-lg bg-gray-900 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-white"
               />
             </div>
