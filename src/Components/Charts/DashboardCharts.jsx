@@ -320,7 +320,7 @@ export default function DashboardCharts() {
                 </h2>
               </div>
               <div className="flex gap-2">
-                {["monthly", "weekly","today"].map((tab) => (
+                {["monthly", "weekly", "today"].map((tab) => (
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
@@ -336,9 +336,9 @@ export default function DashboardCharts() {
               </div>
             </div>
 
-            <div className="h-64 flex items-end justify-between gap-2 px-4">
+            <div className="flex items-end justify-between gap-2 px-4" style={{ height: "300px" }}>
               {currentData.map((item, index) => {
-                const barHeight = (item.value / maxValue) * 100;
+                const barHeight = (item.value / maxValue) * 240;
                 const isHovered = hoveredBar === index;
 
                 return (
@@ -348,23 +348,23 @@ export default function DashboardCharts() {
                     onMouseEnter={() => setHoveredBar(index)}
                     onMouseLeave={() => setHoveredBar(null)}
                   >
-                    <div className="relative w-full">
+                    <div className="relative w-full" style={{ height: "240px", display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
                       {isHovered && (
-                        <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-700 text-white text-xs px-2 py-1 rounded whitespace-nowrap">
+                        <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-700 text-white text-xs px-2 py-1 rounded whitespace-nowrap z-10">
                           {item.value} orders
                           <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full">
-                            <div className="border-4 border-transparent border-t-gray-500"></div>
+                            <div className="border-4 border-transparent border-t-gray-700"></div>
                           </div>
                         </div>
                       )}
                       <div
                         className="w-full rounded-t-lg transition-all duration-300 cursor-pointer"
                         style={{
-                          height: `${barHeight}%`,
+                          height: `${barHeight}px`,
                           background: isHovered
                             ? "linear-gradient(to bottom, #dc2626, #f97316)"
                             : "linear-gradient(to bottom, #fca5a5, #fed7aa)",
-                          minHeight: "20px",
+                          minHeight: "8px",
                         }}
                       />
                     </div>
