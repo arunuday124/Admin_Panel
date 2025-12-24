@@ -14,7 +14,7 @@ export default function DashboardCharts() {
 
   // Bar chart data
   const barData = {
-    weekly: [
+    monthly: [
       { date: "Jun 24", value: 180, label: "Mon" },
       { date: "Jun 25", value: 140, label: "Tue" },
       { date: "Jun 26", value: 250, label: "Wed" },
@@ -23,7 +23,7 @@ export default function DashboardCharts() {
       { date: "Jun 29", value: 160, label: "Sat" },
       { date: "Jun 30", value: 220, label: "Sun" },
     ],
-    monthly: [
+    weekly: [
       { date: "Week 1", value: 850, label: "W1" },
       { date: "Week 2", value: 920, label: "W2" },
       { date: "Week 3", value: 780, label: "W3" },
@@ -320,7 +320,7 @@ export default function DashboardCharts() {
                 </h2>
               </div>
               <div className="flex gap-2">
-                {["monthly", "weekly", "today"].map((tab) => (
+                {["monthly", "weekly","today"].map((tab) => (
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
